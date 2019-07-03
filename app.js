@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var url = 'mongodb://uapp:uapp123@ds243717.mlab.com:43717/uapplication'
 var Req = require('request');
 //const authUrl = 'http://localhost:4200/authapp/v1/auths/validate';
-const authUrl = 'https://todoauth.herokuapp.com//authapp/v1/auths/validate';
+const authUrl = 'https://todoauth.herokuapp.com/authapp/v1/auths/validate';
 
 mongoose.connect(url,{ useNewUrlParser: true }, function (err) {
     if (err) {
