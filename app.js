@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
     
     console.log('request came to the url:'+req.url)
     if (req.headers.authorization) {
-        request.post({ url: authUrl,headers:req.headers,json:true,timeout:1000}, function (err, respObject,body) {
+        request.post({ url: authUrl,headers:req.headers,json:true,timeout:10000}, function (err, respObject,body) {
             if(err){
                  console.log('err in todo') 
                  console.log(`${err}`) 
