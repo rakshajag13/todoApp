@@ -27,6 +27,7 @@ app.use(function (req, res, next) {
         request.post({ url: authUrl,headers:req.headers,json:true,timeout:1000}, function (err, respObject,body) {
             if(err){
                  console.log('err in todo') 
+                 console.log(`${err}`) 
                 res.status(500).send({status:'error',message:'Auth server is down'});
             }
             else if(body.success){
