@@ -20,21 +20,30 @@ mongoose.connect(url,{ useNewUrlParser: true }, function (err) {
 
 var todos = require('./routes/todos');
 app.use(function (req, res, next) {
+    
+    
+    console.log('request came to the url:'+req.url)
     if (req.headers.authorization) {
         request.post({ url: authUrl,headers:req.headers,json:true}, function (err, respObject,body) {
             if(err){
+                 console.log('err in todo') 
                 res.status(500).send({status:'error',message:'Auth server is down'});
             }
             else if(body.success){
-                
+                 console.log('success in todo') 
                 next();
             }
             else{
+                 console.log('success in body') 
                 res.status(400).send(body)
             }
             
         });
     } else {
+        
+       
+    console.log('request came without token') 
+        
         res.status(400).send('Authorization token is missing');
     }
 });
