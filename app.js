@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 //var url = 'mongodb://localhost:27017/uapplication'
 var url = 'mongodb://uapp:uapp123@ds243717.mlab.com:43717/uapplication'
-var Req = require('request');
+var request = require('request');
 //const authUrl = 'http://localhost:4200/authapp/v1/auths/validate';
 const authUrl = 'https://todoauth.herokuapp.com/authapp/v1/auths/validate';
 
@@ -21,7 +21,7 @@ mongoose.connect(url,{ useNewUrlParser: true }, function (err) {
 var todos = require('./routes/todos');
 app.use(function (req, res, next) {
     if (req.headers.authorization) {
-        Req.post({ url: authUrl,headers:req.headers,json:true}, function (err, respObject,body) {
+        request.post({ url: authUrl,headers:req.headers,json:true}, function (err, respObject,body) {
             if(err){
                 res.status(500).send({status:'error',message:'Auth server is down'});
             }
