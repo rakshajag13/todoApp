@@ -2,6 +2,7 @@ var Router = require('express').Router();
 var TODO = require('../models/model_todos');
 
 Router.get('/', function (req, res) {
+    console.log('GET Request')
     TODO.find({},{_id:0,__v:0} ,function (err, data) {
         if (err) {
             res.status(500).send({ status: "err", message: "DB error" });
